@@ -63,6 +63,15 @@ static int bullet_get_sprite(tile_t *tile) {
     }
 }
 
+void bullet_destroy(bullet_t *bullet) {
+    if (!bullet) return;
+
+    if (bullet->tile) {
+        free(bullet->tile);
+    }
+    free(bullet);
+}
+
 bullet_t* bullet_create_internal(int x, int y, int speed) {
     bullet_t *bullet = malloc(sizeof(bullet_t));
     bullet->speed_x = speed;
